@@ -30,9 +30,6 @@ public class DesktopMainWindow extends JFrame {
 		internalFrame.setVisible(true);
 
 		
-
-		
-		
 		getContentPane().add(new MainToolBar(), BorderLayout.PAGE_START);
 		setJMenuBar(new MainMenu());
 		

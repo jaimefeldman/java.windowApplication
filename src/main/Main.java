@@ -2,12 +2,10 @@ package main;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.xml.ws.Dispatch;
 
 import windows.DesktopMainWindow;
 import windows.ExitPreProceso;

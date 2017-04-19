@@ -1,6 +1,8 @@
 package windows;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
+import javax.swing.Timer;
 
 public class ExitPreProceso extends JFrame {
 
@@ -64,14 +67,33 @@ public class ExitPreProceso extends JFrame {
 			@Override
 			protected void done() {
 				resultLabel.setText("Finalizado.. el hilo del worker");
-				try {TimeUnit.SECONDS.sleep(2);} catch(InterruptedException e){};
-				dispose();
-				System.exit(1);
+				//Tomando el tiempo de alguna tarea.
+				//long tIncio, tFin;
+				//tIncio = System.currentTimeMillis();
+				Timer timer = new Timer(2500, new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						System.out.println("el hilo esta en: " + Thread.currentThread().getName());
+						System.out.println("espernado 2500 millis. para finalizar la app.");
+						try { Thread.sleep(2500); } catch(InterruptedException ex) {};
+						System.out.println("App finalizada.!");
+						dispose();
+						System.exit(0);
+					}
+				});
+				timer.setRepeats(false);
+				timer.start();
+				//dispose();
+				//tFin = System.currentTimeMillis();
+				//System.out.println("El tiempo fue de: " + (tFin - tIncio) + " miliseconds.");
+				//System.exit(1);
 			}
 			
 		};
 		
 		worker.execute();
+	
 		
 	}
 
